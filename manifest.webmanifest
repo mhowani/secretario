@@ -1,0 +1,15 @@
+{
+  "name": "Secretario",
+  "short_name": "Secretario",
+  "description": "Informes, asistencia y formularios del secretario de la congregación. Los datos se guardan solo en el dispositivo.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2f2f7",
+  "theme_color": "#0a64d6",
+  "icons": [
+    { "src": "icono-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
