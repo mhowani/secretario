@@ -60,6 +60,8 @@ main { flex: 1; min-width: 0; padding: 26px 32px 60px; max-width: 1180px; }
 .tarjeta { background: var(--tarjeta); border-radius: var(--radio); padding: 16px 18px; box-shadow: var(--sombra); margin-bottom: 16px; border: 1px solid var(--linea); }
 .rejilla { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); margin-bottom: 16px; }
 .rejilla .tarjeta { margin: 0; }
+.rejilla > * { min-width: 0; }
+.btn { max-width: 100%; }
 .dato { display: flex; flex-direction: column; gap: 2px; }
 .dato .emoji { font-size: 26px; }
 .dato .valor { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
@@ -148,6 +150,8 @@ table.t tr.clic { cursor: pointer; } table.t tr.clic:hover td { background: var(
   .informe .nombre { grid-column: 1 / -1; }
   .informe .notas { grid-column: 1 / -1; }
   .rejilla { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rejilla.bienvenida { grid-template-columns: 1fr; }
+  .btn { white-space: normal; text-align: center; justify-content: center; }
   .dato .valor { font-size: 24px; }
   .tarjeta { padding: 14px; }
   .etq-movil { display: block; font-size: 11px; color: var(--suave); text-align: center; margin-bottom: 2px; }
@@ -1140,10 +1144,10 @@ VISTAS.inicio = () => {
   const hoy = new Date();
   if (!D.personas.length) {
     return `<h1>👋 Bienvenido</h1><p class="sub">Para empezar, trae los datos de la app de tu Mac o añade los publicadores a mano.</p>
-    <div class="rejilla">
-      <div class="tarjeta"><h3>📥 Importar copia de seguridad</h3><p class="suave peq">Elige el archivo «Secretario copia ….json» que exporta la app (está en tu carpeta Secretario de iCloud Drive).</p><button class="btn" data-accion="importar">Elegir archivo…</button></div>
-      <div class="tarjeta"><h3>➕ Empezar de cero</h3><p class="suave peq">Rellena los datos de la congregación y añade los publicadores uno a uno.</p><div class="acciones"><a class="btn sec" href="#ajustes">Datos de la congregación</a><a class="btn gris" href="#nuevo">Añadir publicador</a></div></div>
-      ${incluidos() ? '' : '<div class="tarjeta"><h3>📑 Formularios oficiales</h3><p class="suave peq">Carga una vez los PDF de tu carpeta Formularios (S-1, S-3, S-10, S-21 y S-88). Se guardan solo en este dispositivo.</p><button class="btn sec" data-accion="cargar-formularios">📂 Cargar formularios…</button></div>'}
+    <div class="rejilla bienvenida">
+      <div class="tarjeta"><h3>📥 1. Importar copia de seguridad</h3><p class="suave peq">Elige el archivo «Secretario copia ….json» que exporta la app (está en tu carpeta Secretario de iCloud Drive).</p><button class="btn" data-accion="importar">Elegir archivo…</button></div>
+      ${incluidos() ? '' : '<div class="tarjeta"><h3>📑 2. Cargar los formularios oficiales</h3><p class="suave peq">Elige los PDF de tu carpeta Formularios (S-1, S-3, S-10, S-21 y S-88). Puedes elegirlos todos a la vez. Se guardan solo en este dispositivo.</p><button class="btn sec" data-accion="cargar-formularios">📂 Cargar formularios…</button></div>'}
+      <div class="tarjeta"><h3>➕ O empezar de cero</h3><p class="suave peq">Rellena los datos de la congregación y añade los publicadores uno a uno.</p><div class="acciones"><a class="btn sec" href="#ajustes">⛪ Datos de la congregación</a><a class="btn gris" href="#nuevo">👤 Añadir publicador</a></div></div>
     </div>
     <p class="suave peq">🔒 Tus datos no salen de este dispositivo: no hay servidor ni cuenta. Haz copias de seguridad en iCloud Drive.</p>`;
   }

@@ -1,6 +1,6 @@
 // Guarda la página para que funcione sin conexión. Primero intenta la red
 // (así llegan las actualizaciones) y, si no hay conexión, usa la copia guardada.
-const CACHE = 'secretario-v1';
+const CACHE = 'secretario-v2';
 const ARCHIVOS = ['./', './index.html', './manifest.webmanifest', './icono-192.png', './icono-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ARCHIVOS))); self.skipWaiting(); });
 self.addEventListener('activate', e => e.waitUntil(
